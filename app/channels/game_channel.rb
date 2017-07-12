@@ -1,12 +1,15 @@
 class GameChannel < ApplicationCable::Channel
 
+    player_1 = nil
+    player_2 = nil
 
     def subscribed
-      stream_from params[:room]
+      stream_from params[:game]
     end
 
     def receive(data) 
-      ActionCable.server.broadcast(params[:room], data)
+      byebug
+      ActionCable.server.broadcast(params[:game], data)
     end
 
     def perform(data)
