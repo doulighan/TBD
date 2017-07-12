@@ -5,8 +5,11 @@ class GameChannel < ApplicationCable::Channel
       stream_from params[:room]
     end
 
-    def recieve(data) 
-      ActionCable.sever.broadcast(params[:room], data)
+    def receive(data) 
+      ActionCable.server.broadcast(params[:room], data)
+    end
+
+    def perform(data)
     end
 
 
